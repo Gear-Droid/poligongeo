@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-%bccf66_%z@u82*)jwj3z+8a=uvca#xq=64h#w81v^4%gg+w42
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['poligongeo-co.ru', 'www.poligongeo-co.ru']
 
 
 # Application definition
@@ -76,11 +76,13 @@ WSGI_APPLICATION = 'poligongeo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'u2100187_default',
+        'USER': 'u2100187_default',
+        'PASSWORD': 'J6hjsAlC4zlSf978',
+        'HOST': 'localhost',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
