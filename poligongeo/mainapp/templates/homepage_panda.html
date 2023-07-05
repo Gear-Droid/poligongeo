@@ -1,0 +1,739 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- <link rel="icon" type="image/png" href="{% static 'favicon.ico' %}"/> -->
+  <!-- <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon.ico' %}"> -->
+	<!-- <meta name="yandex-verification" content="6900977733fba006" /> -->
+  <!-- <meta name="google-site-verification" content="HAaj6DI9-GH18Me0i4aGBNiA0T3ueYTMTYLOvMrX6uA" /> -->
+
+  <link rel="preload" href="{% static 'fonts/bamboo-gothic.book.ttf' %}" as="font" type="font/ttf" crossorigin>
+
+  <!--===============================================================================================-->
+    <!-- Bootstrap core CSS -->
+      <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
+  <!--===============================================================================================-->
+    <!-- Homepage CSS style -->
+      <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <!--===============================================================================================-->
+    <!-- Navbar CSS style -->
+      <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+  <!--===============================================================================================-->
+
+  <title>{{ meta.Title }}</title>
+  <meta name="keywords" content="{{ meta.keywords }}">
+  <meta name="description" content="{{ meta.page_description }}">
+
+  {% block header %}
+  {% endblock header %}
+
+  <style>
+
+    {% block style %}
+      @font-face {
+        font-family: 'bamboo';
+        src: url('{% static 'fonts/vinsdojo.ttf' %}');
+      }
+      *{
+        font-family: bamboo;
+        font-size: x-large;
+        text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+        color: white;
+        text-align: center;
+      }
+
+      @font-face {
+        font-family: 'testfont';
+        src: url('{% static 'fonts/Zaychik-Regular.ttf' %}');
+      }
+      .testfont{
+        line-height: normal;
+        font-family: testfont;
+        font-size: 0.9em;
+        /* font-size: 1.2em; */
+        font-weight: bold;
+        letter-spacing: 0.1em;
+        color: white;
+        text-align: center;
+      }
+      body{
+        background: lightblue;
+        background: #00ecf540;
+      }
+      .picture-breaker-container{
+        height: 10vw;
+      }
+      .picture-breaker-container{
+        font-size: xx-large;
+        padding: 5vw;
+        width: 100vw;
+        z-index: 10;
+      }
+      .nav-item{
+        background-image: url({% static 'images/plank.png' %});
+        background-size: 100%,auto;
+        background-repeat: no-repeat;
+      }
+      .principles-item{
+        width: 80vw;
+        height: 60vw;
+        background-image: url({% static 'images/principles_plank.png' %});
+        background-size: 100%,auto;
+        background-repeat: no-repeat;
+        padding: 6vw 0vw;
+      }
+      .faqs-item{
+        width: 80vw;
+        height: 60vw;
+        background-image: url({% static 'images/principles_plank.png' %});
+        background-size: 100%,auto;
+        background-repeat: no-repeat;
+        padding: 6vw 3vw;
+      }
+      .faqs-item{
+        padding: 7vw 2vw;
+      }
+      footer{
+        background: lightblue;
+        height: 130vw;
+        background-image: url({% static 'images/bottom.png' %});
+        background-size: 100%,auto;
+        background-repeat: no-repeat;
+      }
+    {% endblock style %}
+
+  </style>
+
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav style="
+      background-image: url({% static 'images/top.png' %});
+      background-repeat: no-repeat;
+      background-size: 100%,auto;
+    "
+    class="navbar navbar-expand-md fixed-top" aria-label="navbar"
+  >
+    <div class="container-fluid">
+      <div class="navbar-brand-container">
+        <a style="background-image: url({% static 'images/logo.png' %});" class="navbar-brand"></a>
+      </div>
+
+      <button class="navbar-toggler hamburger collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </button>
+
+      <div style="flex-grow: 0.6;"
+        class="collapse navbar-collapse" id="navbarContent"
+      >
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#about">About us</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#story">Story</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#principles">Principles</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#disciples">Disciples</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#faqs">FAQs</a>
+          </li>
+        </ul>
+      </div>
+      <!-- /.collapse -->
+
+    </div>
+  </nav>
+
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %} alert-danger {% else %} alert-success {% endif %} alert-dismissible fade show my-0" role="alert">
+        <strong>{{ message }}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  {% block intro %}
+  {% endblock intro %}
+
+  <!-- Page Content -->
+  <div class="main-content" style="
+    position: relative;
+    top: -5vw;
+    margin-bottom: -6vw;">
+
+    {% block content %}
+    <div class="nav-container" style=""></div>
+
+    <video class="versus-panda-background" id="about" style="
+      vertical-align: middle;
+      width:100vw;
+      background-size: 100%,auto;
+      background-repeat: no-repeat;
+      text-align: center;
+      "
+      src="{% static 'back.MP4' %}"
+      autoplay
+      muted
+      loop>
+    </video>
+    <img src="{% static 'images/play.PNG' %}" style="
+      position: absolute;
+      top: 20vw;
+      left: 25vw;
+      width: 50vw;
+    ">
+    <div class="picture-breaker-container" style=""></div>
+    <div class="picture-breaker" style="
+      position: relative;
+      top: 60vw;
+      width: 100vw;
+      height: 0;
+      background-size: 100%,auto;
+      background-repeat: no-repeat;
+    ">
+      <img src="{% static 'images/breaker.png' %}" style="
+        position: relative;
+        left: 0;
+        top: -115vw;
+        width: 100vw;
+      ">
+      <div style="
+        position: relative;
+        left: 0;
+        top: -170vw;"
+      >
+        <span class="header" style="">
+          It's not a cult</br>
+        </span>
+        <span style="
+          font-size: small;
+          z-index: 10;
+        ">
+          Trippin' Ape Tribe is a community-first PFP project on Solana and passionate community of free-thinking degens.</br>
+          10,000 Apes have fallen under the trance of a mysterious, but don’t worry… it's definitely not a cult.</br>
+        </span>
+        <img src="{% static 'images/OpenSeaLogo.png' %}" style="
+          position: relative;
+          z-index: 5;
+          background: white;
+          top: 32vw;
+          width: 60vw;
+          border: 15px solid;
+          border-radius: 35px;
+        ">
+      </div>
+    </div>
+
+    <div class="join-the-clan-background" style="
+      background-image: url({% static 'images/join_the_clan.jpg' %});
+      height:140vw;
+      background-size: 100%,auto;
+      background-repeat: no-repeat;
+    ">
+    </div>
+
+    <div class="picture-breaker-container" id="story" style=""></div>
+    <div class="picture-breaker" style="
+      position: relative;
+      top: 45vw;
+      width: 100vw;
+      height: 0;
+      background-size: 100%,auto;
+      background-repeat: no-repeat;
+    ">
+      <img src="{% static 'images/breaker.png' %}" style="
+        position: relative;
+        left: 0;
+        top: -110vw;
+        width: 100vw;
+      ">
+      <div style="
+        position: relative;
+        left: 0;
+        top: -170vw;"
+      >
+        <span class="header" style="">
+          THE story so far</br>
+        </span>
+        <span style="
+          padding: 10vw;
+          width: 100vw;
+          font-size: small;
+          z-index: 10;
+        ">
+          WTF is actually going on?!
+        </span>
+      </div>
+      <div class="team-member-container" style="
+        position: relative;
+        z-index: 5;
+        bottom: 140vw;
+        width: 100vw;
+        overflow: hidden;
+      ">
+        <img src="{% static 'images/team_member.png' %}" style="
+          position: relative;
+          left: -30vw;
+          width: 170vw;
+          max-width: 1200px;
+        ">
+      </div>
+    </div>
+
+    <div class="collection-background" style="
+      display: flex;
+      flex-direction: column;
+      padding-top: 5vw;
+      background-image: url({% static 'images/story.jpg' %});
+      background-image: none;
+      background-position-y: center;
+      height:150vw;
+      background-size: 100%,auto;
+      /* background-repeat: no-repeat; */
+      overflow: hidden;
+    ">
+
+      <div class="collection-row" style="">
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/ARTUR.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/VLAD.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/VADIM.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/ARTUR.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/VLAD.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/VADIM.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/ARTUR.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/VLAD.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/VADIM.png' %}">
+        </div>
+      </div>
+
+      <div class="collection-row" style="">
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/ARTUR.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/VLAD.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/VADIM.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/ARTUR.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/VLAD.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/VADIM.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/ARTUR.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/VLAD.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/VADIM.png' %}">
+        </div>
+      </div>
+
+      <div class="collection-row" style="">
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/ARTUR.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/VLAD.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/VADIM.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/ARTUR.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/VLAD.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/VADIM.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/ARTUR.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/VLAD.png' %}">
+        </div>
+        <div class="collection-row-item" style="">
+          <img class="collection-row-item-img" src="{% static 'images/VADIM.png' %}">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="picture-breaker-container" id="story" style=""></div>
+    <div class="picture-breaker" style="
+      position: relative;
+      top: 60vw;
+      height: 0;
+      z-index: 10;
+      background-size: 100%,auto;
+      background-repeat: no-repeat;
+    ">
+      <img src="{% static 'images/breaker.png' %}" style="
+        position: relative;
+        left: 0;
+        top: -110vw;
+        width: 100vw;
+      ">
+      <div style="
+        position: relative;
+        left: 0;
+        top: -170vw;"
+      >
+        <span class="header" style="">
+          THE story so far</br>
+        </span>
+        <span style="
+          padding: 10vw;
+          width: 100vw;
+          font-size: small;
+          z-index: 10;
+        ">
+          WTF is actually going on?!
+        </span>
+      </div>
+    </div>
+
+    <div class="story-background" style="
+      height: fit-content;
+      margin-bottom: 40vw;
+      padding: 20vw 10vw;
+      /* background-image: url({% static 'images/story.jpg' %});
+      background: lightblue; */
+      background: linear-gradient(#bffafc00, lightblue, #bffafc00);
+      background-size: 100%,auto;
+    ">
+      <span class="testfont" style="font-size: x-large;">
+        Are you ready to take this fucking world down on its knees?</br></br>
+      </span>
+      <span class="testfont" style="font-size: large;">
+        Smoothest storytelling there is, a true “brotherhood” community and an opportunity to make some cash – Panda play is all of that and more. Homies that think like you are already banging up into a single large clan in order to shoot for the top. You are the one in control of the story. It’s time to reach for the stars or drop dead.</br>
+      </span>
+      <span class="testfont" style="font-size: large;">
+        Are you ready?</br></br>
+      </span>
+      <span class="testfont" style="font-size: large;
+        ">
+        Then we’re off to the panda Pablo’s world, where he is desperately trying to survive in a city full o’ sin, drugs and copious amounts of firearms. Pablo is tired of constantly being down under, the time has come to break the usual way of things. Top of the food chain is waiting for him with open arms, money, power and, of course, whores. But nothing’s that easy in this world.</br>
+        This gig is run by the only and only Warrior Clan, which has never learned how to share with others. No man in a position of power would ever toss a free bone to a stranger; they’d rather fight for it to the death.</br>
+        WC holds this whole land’s cash inside their muthafuckin' safes, which makes both police chief and mayor no different from sock puppets, but they are *their* sock puppets. Try droppin’ a word, scratch that, a thought, with any discontent towards them and you’ll feed fishes in the dock in half an hour. Long ago they were simple street dealers, and then they grew an additional set o’ balls and turned the whole city into their leash junkies. You either spend all of your working for the hit or slave yourself to them straight away to avoid the middleman. With such a shitload of loyal puppets only a similarly strong clan can stand against them…</br>
+        </br>
+        Pablo wants to get his own crew together, but he’s going to need some help. Mo’ pandas – mo’ opportunities to grab everything that you lay your goddamn eyes on. And he’s done just that – searched for like-minded homies, ready to risk everything. Meet the team!</br>
+          Joshua was Pablo’s best friend back in the hood, up until he suddenly found himself at the top. In 2013 he listened to some dork in a pub and bought a couple bitcoins off of him, quickly forgetting about it up until 2021. Getting a fortune out of nowhere got to his head, so without further ado he just dumped everything into LOONA without research. Needless to say, after getting a taste of high-rise life Joshua ain’t going to let things be.</br>
+          Jimmy n’ Tom are Pablo’s homies. Constantly hanging around bars and stripper rows, they are known by every single pimp round the city central. Jimmy is a graffiti artist with a dream of earning off of Sotheby’s. Tom’s some computer genius from the Darknet that has managed to rob multiple banks and stay off the grid. However, everyone around him understands that even infinite luck might run out some day – he will fuck up one day. He’s dreaming about setting up a proper legal IT company that will focus on helping the downtrodden.</br>
+          Jonny n’ Jim are Pablo’s cousins. These two fuck hard. They fuck everyone that has money and is gullible enough. Give them a pen and a month later they’ll give yo’ a Lambo. Dem boys can sell anything to anyone. Real professionals.</br>
+        </br>
+        The crew gets together to band into the strongest clan in history, but what they are facing isn’t some small group, they aren’t enough for this gig. To reach their goal they are going to need at least 2000 pandas from ‘round the world.</br>
+        It is time to get the game goin’. Every single damn junkie o’ this city will soon know the names of Pablo and his muthafuckin’ crew. Get ready… to join their fight for money and power!</br>
+        </br>
+      </span>
+      <span class="testfont" style="font-size: x-large;">
+        Join us n’ kick some ass!</br>
+      </span>
+    </div>
+
+    <div class="picture-breaker-container" id="principles"></div>
+    <div class="picture-breaker" style="
+      position: relative;
+      top: 50vw;
+      width: 100vw;
+      height: 0;
+      background-size: 100%,auto;
+      background-repeat: no-repeat;
+    ">
+      <img src="{% static 'images/breaker.png' %}" style="
+        position: relative;
+        left: 0;
+        top: -145vw;
+        width: 100vw;
+      ">
+      <div style="
+        position: relative;
+        left: 0;
+        top: -215vw;"
+      >
+        <span class="header" style="
+          position: relative;
+          top: 15vw;
+        ">
+          Principles</br>
+        </span>
+      </div>
+    </div>
+    
+    <div class="principles-container"
+      style="
+      "
+    >
+      <ul style="">
+        <li class="principles-item" style="">
+          <span class="faq-question" style="">
+            I. Community
+          </span>
+          <span class="faq-answer" style="">
+            We are creating the strongest community on _.  We carefully thought out the concept and communication in order to create maximum noise and hype around the project and attract the most interesting and powerful people to it in order to gain power, money and value.
+          </span>
+        </li>
+        <li class="principles-item" style="">
+          <span class="faq-question" style="">
+            II. Identity
+          </span>
+          <span class="faq-answer" style="">
+            We intend to create a recognizable brand for free-thinking people.</br>With our unique NFTs our community will improve them identity in connection of partnerships with other brands and collections, we will increase our recognition and influence in the community.
+          </span>
+        </li>
+        <li class="principles-item" style="">
+          <span class="faq-question" style="">
+            III. Ambition
+          </span>
+          <span class="faq-answer" style="">
+            Community without limitations - it is our way.</br>We are developing our product to the scale of an independent ecosystem that includes many valuable products. Both online&offline.
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="picture-breaker-container" id="disciples" style="height: 70vw;"></div>
+    <div class="picture-breaker" style="
+      position: relative;
+      top: 30vw;
+      width: 100vw;
+      height: 0;
+      background-size: 100%,auto;
+      background-repeat: no-repeat;
+    ">
+      <img src="{% static 'images/breaker.png' %}" style="
+        position: relative;
+        left: 0;
+        top: -115vw;
+        width: 100vw;
+      ">
+      <div style="
+        position: relative;
+        left: 0;
+        top: -170vw;"
+      >
+        <span class="header" style="">
+          Disciples</br>
+        </span>
+      </div>
+    </div>
+
+    <div class="disciples-container" style="margin-top: 0vw;">
+      <ul style="">
+        <li class="disciples-item" style="">
+          <div class="member-image" style="">
+            <img src="{% static 'images/ARTUR.png' %}" style="width: 80vw;">
+          </div>
+          <div class="member-text-block" style="">
+            <span class="header" style="font-size: xxx-large;">
+              ARTUR</br>
+            </span>
+            <span class="header" style="font-size: x-large;">
+              CO-FOUNDER</br>
+            </span>
+            <span style="font-size: small;">
+              Full-time degen and ex-psychonaut. Man of many passions. Experienced in a wide range of different industries with the ability to adapt and apply variety of experience to solve complex problems. Maestro of trial and error.</br>
+            </span>
+          </div>
+        </li>
+
+        <li class="disciples-item" style="">
+          <div class="member-image" style="">
+            <img src="{% static 'images/VADIM.png' %}" style="width: 80vw;">
+          </div>
+          <div class="member-text-block" style="">
+            <span class="header" style="font-size: xxx-large;">
+              VADIM</br>
+            </span>
+            <span class="header" style="font-size: x-large;">
+              CO-FOUNDER</br>
+            </span>
+            <span style="font-size: small;">
+              Full-time degen and ex-psychonaut. Man of many passions. Experienced in a wide range of different industries with the ability to adapt and apply variety of experience to solve complex problems. Maestro of trial and error.</br>
+            </span>
+          </div>
+        </li>
+
+        <li class="disciples-item" style="">
+          <div class="member-image" style="">
+            <img src="{% static 'images/VLAD.png' %}" style="width: 80vw;">
+          </div>
+          <div class="member-text-block" style="">
+            <span class="header" style="font-size: xxx-large;">
+              VLAD</br>
+            </span>
+            <span class="header" style="font-size: x-large;">
+              WEB DEVELOPER</br>
+            </span>
+            <span style="font-size: small;">
+              Master of self-development and procrastination.</br>
+            </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="picture-breaker-container" id="faqs" style="height: 70vw;"></div>
+    <div class="picture-breaker" style="
+      position: relative;
+      top: 30vw;
+      width: 100vw;
+      height: 0;
+      background-size: 100%,auto;
+      background-repeat: no-repeat;
+    ">
+      <img src="{% static 'images/breaker.png' %}" style="
+        position: relative;
+        left: 0;
+        top: -115vw;
+        width: 100vw;
+      ">
+      <div style="
+        position: relative;
+        left: 0;
+        top: -170vw;"
+      >
+        <span class="header" style="">
+          FAQs</br>
+        </span>
+      </div>
+    </div>
+
+    <div class="faqs-container" style="margin-top: 0vw; background: linear-gradient(#bffafc00, lightblue);">
+      <ul style="">
+        <li class="faqs-item" style="">
+          <span class="faq-question" style="">
+            What is Trippin’ Ape Tribe?</br>
+          </span>
+          <span class="faq-answer" style="">
+            Trippin’ Ape Tribe is a community-first PFP project on Solana, backed by strong and ownable branding, hilarious storytelling, innovative lore-based utility, and a passionate community of free-thinking degens.
+          </span>
+        </li>
+
+        <li class="faqs-item" style="">
+          <span class="faq-question" style="">
+            How large is the collection?
+          </span>
+          <span class="faq-answer" style="">
+            10,000 apes will ascend.
+          </span>
+        </li>
+
+        <li class="faqs-item" style="">
+          <span class="faq-question" style="">
+            What marketplaces are you listed on?
+          </span>
+          <span class="faq-answer" style="">
+            Magic Eden & OpenSea.</br> We will consider others if the Tribe demands and Chorles approves.
+          </span>
+        </li>
+
+        <li class="faqs-item" style="">
+          <span class="faq-question" style="">
+            Where is your roadmap?
+          </span>
+          <span class="faq-answer" style="">
+            Although Chorles sees visions of the future, he shares only what the Tribe must know.</br>
+            His most perceptive followers who can read between the lines will be rewarded.
+          </span>
+        </li>
+
+        <li class="faqs-item" style="">
+          <span class="faq-question" style="">
+            Is this a cult?
+          </span>
+          <span class="faq-answer" style="">
+            Definitely not. Who told you that?
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    {% endblock content %}
+
+  </div>
+  <!-- /.content -->
+
+  <div style="background: lightblue;"
+    class="prefooter"
+  >
+    <!-- Yandex.Metrika counter -->
+      <!-- <script type="text/javascript" >
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(88410462, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+        });
+      </script>
+      <noscript><div><img src="https://mc.yandex.ru/watch/88410462" style="position:absolute; left:-9999px;" alt="" /></div></noscript> -->
+    <!-- /Yandex.Metrika counter -->
+    {% block prefooter %}
+    {% endblock prefooter %}
+  </div>
+
+  <!-- Footer -->
+  <footer class="d-flex flex-wrap justify-content-between align-items-center">
+  </footer>
+
+  <!-- Bootstrap Bundle with Popper -->
+    <script src="{% static 'js/bootstrap/bootstrap.bundle.min.js' %}" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <!-- HTMX -->
+    <script src="{% static 'js/htmx.min.js' %}" defer></script>
+
+  {% block scripts %}
+  {% endblock scripts %}
+
+</body>
+</html>
