@@ -84,8 +84,12 @@
       }
 
       .card-photo {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
         width: inherit;
         width: -webkit-fill-available;
+        object-fit: scale-down;
         border: 7px solid #f1e379;
         border-radius: 50%;
       }
@@ -259,7 +263,7 @@
               <a href="tel:+7(921)-909-88-39">+7 (921) 909 8839</a></br>
             </p>
             <div class="col-5 d-block mx-auto mb-4 image_container" style="height: 100%;">
-              <img class="card-photo" src="{% static 'images/Igor Sivkov.jpg' %}" height="100%" alt="">
+              <img class="card-photo" src="{% static 'images/Igor Sivkov.jpg' %}">
             </div>
           </div>
           <div class="card-body">
@@ -286,7 +290,7 @@
               <a href="tel:+7(931)-231-59-99">+7 (931) 231 5999</a></br>
             </p>
             <div class="col-5 d-block mx-auto mb-4 image_container" style="height: 100%;">
-              <img class="card-photo" src="{% static 'images/Alexey Grecener.jpg' %}" height="100%" alt="">
+              <img class="card-photo" src="{% static 'images/Alexey Grecener.jpg' %}">
             </div>
           </div>
           <div class="card-body">
@@ -314,7 +318,7 @@
               <a href="tel:+7(921)-77-33-814">+7 (921) 77 33 814</a></br>             
             </p>
             <div class="col-5 d-block mx-auto mb-4 image_container" style="height: 100%;">
-              <img class="card-photo" src="{% static 'images/Vyacheslav Grecener.jpg' %}" height="100%" alt="">
+              <img class="card-photo" src="{% static 'images/Vyacheslav Grecener.jpg' %}">
             </div>
           </div>
           <div class="card-body">
