@@ -122,7 +122,7 @@ STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
 
 # where to collect static and media
-STATIC_ROOT = BASE_DIR / '../staticfiles/'
+STATIC_ROOT = 'static/'
 MEDIA_ROOT = BASE_DIR / '../mediafiles/'
 
 if DEBUG:
