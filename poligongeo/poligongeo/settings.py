@@ -76,23 +76,15 @@ WSGI_APPLICATION = 'poligongeo.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-if DEBUG:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": "mydatabase",
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'u2100187_default',
+        'USER': 'u2100187_default',
+        'PASSWORD': 'J6hjsAlC4zlSf978',
+        'HOST': 'localhost',
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'u2100187_default',
-            'USER': 'u2100187_default',
-            'PASSWORD': 'J6hjsAlC4zlSf978',
-            'HOST': 'localhost',
-        }
-    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
