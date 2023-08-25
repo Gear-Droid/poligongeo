@@ -76,10 +76,14 @@ WSGI_APPLICATION = 'poligongeo.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'u2100187_default',
+        'OPTIONS': {
+            'init_command': 'SET default_storage_engine=INNODB',
+        },
         'USER': 'u2100187_default',
         'PASSWORD': 'J6hjsAlC4zlSf978',
         'HOST': 'localhost',
