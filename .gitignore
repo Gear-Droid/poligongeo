@@ -10,3 +10,4 @@ static/
 __init__.py
 poligongeo/mainapp/migrations/
 poligongeo/file_caches/
+/poligongeo/poligongeo/local_settings.py

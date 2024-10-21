@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from . import local_settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -80,12 +81,12 @@ WSGI_APPLICATION = 'poligongeo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'u2100187_default',
+        'NAME': local_settings.DEFAULT_DATABASE_NAME,
         'OPTIONS': {
             'init_command': 'SET default_storage_engine=INNODB',
         },
-        'USER': 'u2100187_default',
-        'PASSWORD': 'J6hjsAlC4zlSf978',
+        'USER': local_settings.DEFAULT_DATABASE_USER,
+        'PASSWORD': local_settings.DEFAULT_DATABASE_PASSWORD,
         'HOST': 'localhost',
     }
 }
